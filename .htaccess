@@ -1,0 +1,10 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteBase /     
+
+RewriteRule ^([0-9A-Za-z_-]+)/([0-9A-Za-z_-]+)$ index.php
+RewriteRule ^([0-9A-Za-z_-]+)/([0-9A-Za-z_-]+)/([0-9A-Za-z_-]+)$ index.php
+RewriteRule ^([0-9A-Za-z_-]+)/([0-9A-Za-z_-]+)/([0-9A-Za-z_-]+)/(.*)$ index.php
+Options -Indexes
+Options +FollowSymLinks
+Options -MultiViews
