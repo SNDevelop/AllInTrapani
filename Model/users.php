@@ -1,5 +1,5 @@
 <?php
-class UsersDal
+class UsersQuery
 {		
 	function SelectedUser($email, $passWord)
 	{		

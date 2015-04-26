@@ -24,7 +24,7 @@ class Navigation
 		if ($url[1]=='secureArea' && !$this->IsLogged())
 			header ("location: ../General/Home");
                 								
-		$userForm = new UsersBll($SelectedSection);
+		$userForm = new UsersLogic($SelectedSection);
 		
 		$userForm->LogIn();
 		$this->UserForm = $userForm->SelectLogInForm();

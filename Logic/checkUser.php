@@ -7,7 +7,7 @@ class CheckUserName
 	function CheckExistingUsername()
 	{
 		$userName = $_GET['v'];
-		$obj = new UsersDal();
+		$obj = new UsersQuery();
 		$res = $obj->CheckExistingUsername($userName);
 		
 		if ($row = mysql_fetch_assoc($res)) {

@@ -8,7 +8,7 @@ class CheckEmail
 	{
 		$email=$_GET['v'];
 		
-		$obj = new UsersDal;
+		$obj = new UsersQuery;
 		$res = $obj->CheckExistingEmail($email);				
 		
 		if ($row = mysql_fetch_assoc($res)) {

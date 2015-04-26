@@ -1,7 +1,7 @@
 <?php
 require '/Views/users.php';
 	
-class UsersBll
+class UsersLogic
 {
 	public function __construct($selectedSection)
 	{		
@@ -16,13 +16,13 @@ class UsersBll
 	
 	function UsersList()
 	{
-		$usersList = new UsersDal();		
+		$usersList = new UsersQuery();		
 		return $usersList->UsersList();
 	}
 	
 	function SelectedUser($email,$passWord)
 	{		
-		$selectedUser = new UsersDal();		
+		$selectedUser = new UsersQuery();		
 		return $selectedUser->SelectedUser($email,$passWord);
 	}
 	
@@ -34,7 +34,7 @@ class UsersBll
 		$email = mysql_real_escape_string(stripcslashes(trim($_POST['email'])));
 		$passWord = sha1(mysql_real_escape_string(stripcslashes(trim($_POST['Password']))));				
 				
-		$selectedUser = new UsersDal();		
+		$selectedUser = new UsersQuery();		
 		$userData = $selectedUser->SelectedUser($email,$passWord);
 		        
         while ($row = mysql_fetch_assoc($userData)) 
@@ -50,7 +50,7 @@ class UsersBll
 	{
 		$formLogin='';
 		
-		$formLogin = new UsersGui();		
+		$formLogin = new UsersView();		
 		
 		if (@$_SESSION['user']=='')
 			$formLogin = $formLogin->LoggedOff();
@@ -87,7 +87,7 @@ class UsersBll
 		{			
 			$verifyCode = $this->VerifyCode();
 			
-			$saveUser = new UsersDal();
+			$saveUser = new UsersQuery();
 			$saveUser->InsertNewUser($userName, $password, $email, $verifyCode);
 			
 			$this->SendEmail("Si è registrato l'utente $userName",'allintrapani@gmail.com', "Registrazione utente $userName");
@@ -140,7 +140,7 @@ class UsersBll
 	
 	function IsNewMail($email)
 	{
-		$obj = new UsersDal;
+		$obj = new UsersQuery;
 		$res = $obj->CheckExistingEmail($email);				
 		
 		if ($row = mysql_fetch_assoc($res)) 		
@@ -151,7 +151,7 @@ class UsersBll
 	
 	function IsNewUserName($userName)
 	{
-		$obj = new UsersDal();
+		$obj = new UsersQuery();
 		$res = $obj->CheckExistingUsername($userName);
 		
 		if ($row = mysql_fetch_assoc($res)) 
@@ -194,7 +194,7 @@ class UsersBll
 	{
 		$activationLink="Ciao $userName <br /> ".'
 			Benvenuto tra gli utenti di All In Trapani.<br />Clicca sul Link sottostante per completare la registrazione. <br />
-			<a href="http://jotaro76.altervista.org/UsersBll/Activation/'.$verifyCode.'/'.$email.'"/ title="All In Trapani">Link di attivazione</a>
+			<a href="http://jotaro76.altervista.org/UsersLogic/Activation/'.$verifyCode.'/'.$email.'"/ title="All In Trapani">Link di attivazione</a>
 		';
 		
 		return $activationLink;
@@ -213,7 +213,7 @@ class UsersBll
         
         $email = str_replace('%40', '@', $email);
         
-        $obj = new UsersDal();
+        $obj = new UsersQuery();
         $result = $obj->CheckIfIsHumanUser($email, $verifyCode);
                         
         if($result!='')

@@ -1,5 +1,5 @@
 <?php
-class UsersGui
+class UsersView
 {
 	function LoggedOn()
 	{
