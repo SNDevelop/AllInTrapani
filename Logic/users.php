@@ -1,5 +1,6 @@
 <?php
 require '/Views/users.php';
+require '/Model/users.php';
 	
 class UsersLogic
 {

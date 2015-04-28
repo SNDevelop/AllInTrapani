@@ -1,4 +1,6 @@
 <?php
+require '/Model/dbFunction.php';
+
 class UsersQuery
 {		
 	function SelectedUser($email, $passWord)

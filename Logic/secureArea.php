@@ -1,4 +1,7 @@
 <?php
+require '/Model/secureArea.php';
+require '/Logic/helper.php';
+
 class SecureAreaActivity
 {
     public $_userName;
@@ -22,8 +25,8 @@ class SecureAreaActivity
             $firstRow = ($requestPage - 1) * $rowForPage;        
                 
         $usersRow = '';
-        $objSecureAreaDal = new SecureAreaDal();
-        $rowUsers = $objSecureAreaDal->FillUsers($idUser, $firstRow, $rowForPage);        
+        $objSecureAreaQuery = new SecureAreaQuery();
+        $rowUsers = $objSecureAreaQuery->FillUsers($idUser, $firstRow, $rowForPage);        
                                             
         while ($row = mysql_fetch_assoc($rowUsers)) 
         {
@@ -47,7 +50,7 @@ class SecureAreaActivity
         }
         
         $objHelper = new Helper();
-        $usersNumber = mysql_result($objSecureAreaDal->CountUsers(), 0);
+        $usersNumber = mysql_result($objSecureAreaQuery->CountUsers(), 0);
         
         $pagination = $objHelper->Pagination($usersNumber, $rowForPage, 3);        
         
@@ -68,7 +71,7 @@ class SecureAreaActivity
         if (@$url[3]!='')
             $idUser=mysql_real_escape_string(trim(stripcslashes($url[3])));
         
-        $obj = new SecureAreaDal();
+        $obj = new SecureAreaQuery();
         $obj->DeleteUser($idUser);
         
         header("location: ../../SecureArea/MenageUsers");
@@ -78,7 +81,7 @@ class SecureAreaActivity
     {
         $idUser = $_SESSION['idUser'];
         
-        $obj = new SecureAreaDal;
+        $obj = new SecureAreaQuery;
         $userData = $obj->FillUsers($idUser,0,1);
         
         while ($row = mysql_fetch_assoc($userData))
@@ -91,7 +94,7 @@ class SecureAreaActivity
     {        
         $idUser = $_SESSION['idUser'];
         
-        $obj = new SecureAreaDal();
+        $obj = new SecureAreaQuery();
         
         $avatarImageName = $obj->SelectAvatarImageName($idUser);
         $avatarImageName = mysql_result($avatarImageName, 0);

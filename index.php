@@ -43,7 +43,7 @@ $section->Nav();
 	    		<div class="imgClose"></div>
 	    	</a>
 	    	
-	    	<form method="post" action="UsersBll/LogIn">													
+	    	<form method="post" action="UsersLogic/LogIn">													
 				<br />Email: <input class="DivPopUpInput" name="email" type="text" value="" /><br /><br />
 				Password: <input class="DivPopUpInput" name="Password" type="password" value="" /><br /><br />
 				<button class="DivPopUpButton" type = "submit" name = "LogIn">Accedi</button>								
@@ -61,7 +61,7 @@ $section->Nav();
 				document.getElementById('regfade').style.display='none'">
 				<div class="imgClose"></div>
 			</a>
-			<form name="RegistrationForm" onSubmit="return SubmitClick();" method="post" action="UsersBll/UserRegistration">
+			<form name="RegistrationForm" onSubmit="return SubmitClick();" method="post" action="UsersLogic/UserRegistration">
 				<br />Email: <span id="msgEmail"></span><span class="hidden" id="resEmailCheck">0</span>
 				<input name="email" onkeyup="CheckEmail();" class="DivPopUpInput" type="text" value="" /><br /><br />
 			 	Nome Utente: <span id="msgUserName"></span><span class="hidden" id="resUserNameCheck">0</span>	 

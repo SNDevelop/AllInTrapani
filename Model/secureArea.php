@@ -1,7 +1,7 @@
 <?php
 require 'dbFunctions.php';
 
-class SecureAreaDal
+class SecureAreaQuery
 {
     function FillUsers($idUser, $requestPage, $rowForPage)
     {                       

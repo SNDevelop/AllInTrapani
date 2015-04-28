@@ -3,15 +3,15 @@ class DbFunctions
 {
 	function DBConnect()
 	{
-		$dbhost = "localhost";
+		/*$dbhost = "localhost";
 		$dbname = "allintrapani";
 		$dbuser = "jotarotp";
-		$dbpasswd = "action";
+		$dbpasswd = "action";*/
 		
-		/*$dbhost = "jotaro76.altervista.org";
+		$dbhost = "jotaro76.altervista.org";
 		$dbname = "my_jotaro76";
 		$dbuser = "jotaro76";
-		$dbpasswd = "action";*/
+		$dbpasswd = "action";
 		
 		$link = mysql_connect($dbhost, $dbuser, $dbpasswd, $dbname);
 		if (!$link) 

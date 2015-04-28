@@ -1,5 +1,7 @@
 <?php
-class ContentDal
+require 'dbFunctions.php';
+
+class ContentQuery
 {			
 	function GetSelectedNews($category, $id)
     {
