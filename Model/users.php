@@ -1,5 +1,5 @@
 <?php
-require '/Model/dbFunction.php';
+require '/Model/dbFunctions.php';
 
 class UsersQuery
 {		
